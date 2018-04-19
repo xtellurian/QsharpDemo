@@ -20,8 +20,11 @@ namespace Quantum.demo
             using (var sim = new QuantumSimulator())
             {
                 var result = MeasureAQubit.Run(sim).Result;
-                System.Console.WriteLine($"Measured: {result} of type {result.GetType()}");
+                System.Console.WriteLine($"Measurements are in the computational basis, and have type: {result.GetType()}." +
+                    $" This time we measured a {result}");
             }
+            System.Console.ReadKey();
+            System.Console.WriteLine();
         }
 
         // Gates
@@ -95,7 +98,8 @@ namespace Quantum.demo
             using (var sim = new QuantumSimulator())
             {
                 System.Console.WriteLine($" ========== Bell State & Teleportation ==========");
-                System.Console.WriteLine($"Two qubits are used. Firstly, lets just use a Hadamard gate (no entanglement)");
+                System.Console.WriteLine($"The following uses a Hadamard gate (no entanglement), " +
+                    $"to get a superposition of states that, when measured, agree ~50% of the time");
                 // Try initial values
                 Result[] initials = new Result[] { Result.Zero, Result.One };
                 foreach (Result initial in initials)
@@ -105,7 +109,10 @@ namespace Quantum.demo
                     System.Console.WriteLine(
                         $"Init:{initial,-4} 0s={numZeros,-4} 1s={numOnes,-4} agree={agree * 100 / n}%");
                 }
-                System.Console.WriteLine($"Next lets just use a Hadamard gate *and* a CNOT Gate to get entanglement");
+
+                System.Console.WriteLine($"Now we add a CNOT Gate to get entanglement, and get agreement 100% of the time");
+                System.Console.WriteLine("Press any key...");
+                System.Console.ReadKey();
                 foreach (Result initial in initials)
                 {
                     var res = BellTest.Run(sim, n, initial, true).Result;

@@ -18,15 +18,10 @@
                     Set (Zero, qubits[1]);
 
                     
-					if(entangle) // we need a Hadamard and a CNOT to entangle in a Bell State
+					H(qubits[0]); 
+					if(entangle)
 					{
-						H(qubits[0]); 
-						CNOT(qubits[0],qubits[1]);
-					}
-					else 
-					{
-					// do just a Hadamard for comparison
-						H(qubits[0]); 
+						CNOT(qubits[0],qubits[1]); // add this CNOT gate to engangle our qubits
 					}
                     
 
