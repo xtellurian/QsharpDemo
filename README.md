@@ -10,7 +10,8 @@ This repo uses Q# to explain some basic concepts in Quantum Computing
 - Run the project - you should see the following output (press any key between stages):
 
 ```
-Measured: Zero of type Microsoft.Quantum.Simulation.Core.Result
+Measurements are in the computational basis, and have type: Microsoft.Quantum.Simulation.Core.Result. This time we measured a Zero
+
  ========== X Gate ==========
 Equivalent to a classical NOT gate on computational basis
 X-Gate on a Zero returns a: One
@@ -23,8 +24,8 @@ Z-Gate on a One returns a: One
 
  ========== Hadamard Gate ==========
 Puts a qubit in a superposition - Measurements are equally likely to be Zero or One
-Hadamard-Gate on a Zero measures One 55% of the time
-Hadamard-Gate on a One measures One 49% of the time
+Hadamard-Gate on a Zero measures One 51% of the time
+Hadamard-Gate on a One measures One 50% of the time
 
  ========== CNOT Gate ==========
 Target is flipped when Control is One
@@ -34,12 +35,13 @@ Target: One,  Control: Zero ->  measures Target: One
 Target: One,   Control: One ->  measures Target: Zero
 
  ========== Bell State & Teleportation ==========
-Two qubits are used. Firstly, lets just use a Hadamard gate (no entanglement)
-Init:Zero 0s=471  1s=529  agree=47%
-Init:One  0s=492  1s=508  agree=49%
-Next lets just use a Hadamard gate *and* a CNOT Gate to get entanglement
-Init:Zero 0s=506  1s=494  agree=100%
-Init:One  0s=514  1s=486  agree=100%
+The following uses a Hadamard gate (no entanglement), to get a superposition of states that, when measured, agree ~50% of the time
+Init:Zero 0s=502  1s=498  agree=50%
+Init:One  0s=485  1s=515  agree=48%
+Now we add a CNOT Gate to get entanglement, and get agreement 100% of the time
+Press any key...
+Init:Zero 0s=515  1s=485  agree=100%
+Init:One  0s=516  1s=484  agree=100%
 
 Press any key to exit
 
