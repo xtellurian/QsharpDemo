@@ -1,5 +1,6 @@
 ﻿using Microsoft.Quantum.Simulation.Core;
 using Microsoft.Quantum.Simulation.Simulators;
+using System.Linq;
 
 namespace Quantum.demo
 {
@@ -7,8 +8,8 @@ namespace Quantum.demo
     {
         static void Main(string[] args)
         {
-            QubitMeasurement();
-            QuantumGates();
+            //QubitMeasurement();
+            //QuantumGates();
             Teleportation();
             System.Console.WriteLine("Press any key to exit");
             System.Console.ReadKey();
@@ -91,8 +92,8 @@ namespace Quantum.demo
             System.Console.WriteLine();
         }
 
-        // Teleportation
-        private static void Teleportation()
+        // Bell Test
+        private static void Bell()
         {
             var n = 1000;
             using (var sim = new QuantumSimulator())
@@ -123,6 +124,26 @@ namespace Quantum.demo
             }
             System.Console.ReadKey();
             System.Console.WriteLine();
+        }
+
+        // source: https://github.com/Microsoft/Quantum
+        private static void Teleportation ()
+        {
+            using (var sim = new QuantumSimulator())
+            {
+                var rand = new System.Random();
+
+                foreach (var idxRun in Enumerable.Range(0, 8))
+                {
+                    var sent = rand.Next(2) == 0;
+                    var received = TeleportClassicalMessage.Run(sim, sent).Result;
+                    System.Console.WriteLine($"Round {idxRun}:\tSent {sent},\tgot {received}.");
+                    System.Console.WriteLine(sent == received ? "Teleportation successful!!\n" : "\n");
+                }
+            }
+
+            System.Console.WriteLine("\n\nPress Enter to continue...\n\n");
+            System.Console.ReadLine();
         }
     }
 }
