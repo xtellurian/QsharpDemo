@@ -8,9 +8,9 @@ namespace Quantum.demo
     {
         static void Main(string[] args)
         {
-            //QubitMeasurement();
+            QubitMeasurement();
             //QuantumGates();
-            Teleportation();
+            //Teleportation();
             System.Console.WriteLine("Press any key to exit");
             System.Console.ReadKey();
         }
@@ -18,11 +18,14 @@ namespace Quantum.demo
         //  Creating and Measuring
         private static void QubitMeasurement()
         {
+            System.Console.WriteLine("Press any key to measure a 'quantum' state");
+            System.Console.ReadKey();
             using (var sim = new QuantumSimulator())
             {
                 var result = MeasureAQubit.Run(sim).Result;
-                System.Console.WriteLine($"Measurements are in the computational basis, and have type: {result.GetType()}." +
-                    $" This time we measured a {result}");
+                System.Console.WriteLine($"\nMeasurements are in the computational basis.\n" +
+                    $"Measurements are of type: {result.GetType()}.\n" +
+                    $"This time we measured a {result}");
             }
             System.Console.ReadKey();
             System.Console.WriteLine();
@@ -31,6 +34,8 @@ namespace Quantum.demo
         // Gates
         private static void QuantumGates()
         {
+            System.Console.WriteLine("Press any key to experiment with quantum gates");
+            System.Console.ReadKey();
             using (var sim = new QuantumSimulator())
             {
                 System.Console.WriteLine($" ========== X Gate ==========");
@@ -95,6 +100,8 @@ namespace Quantum.demo
         // Bell Test
         private static void Bell()
         {
+            System.Console.WriteLine("Press any key to measure some Bell states");
+            System.Console.ReadKey();
             var n = 1000;
             using (var sim = new QuantumSimulator())
             {

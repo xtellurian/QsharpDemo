@@ -3,6 +3,7 @@
     open Microsoft.Quantum.Primitive;
     open Microsoft.Quantum.Canon;
 
+	// X Gates
 	operation XGateExample (initial: Result) : (Result) 
 	{
 		body 
@@ -40,6 +41,7 @@
 		}
 	}
 
+	// Hadamard Gates
 	operation HGateExample (count : Int, initial: Result) : (Int) 
 	{
 		body 
@@ -63,6 +65,7 @@
 		}
 	}
 
+	// CNOT
 	operation CNOTGateExample (control: Result, target: Result) : (Result, Result) 
 	{
 		body 
